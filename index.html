@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="El Pollo Feliz: pollo a la brasa, combos familiares y deliciosas especialidades en Oruro, Bolivia.">
+<title>El Pollo Feliz | Sabor que reúne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --red:#9f1d2d;--red2:#c52b3b;--wine:#4b101b;--gold:#e8b65a;
+ --cream:#fffaf2;--paper:#f7f0e7;--ink:#261b1b;--muted:#766a67;
+ --white:#fff;--shadow:0 18px 50px rgba(58,20,20,.12);
+ --radius:24px;--max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65}
+img{display:block;width:100%;object-fit:cover}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+.section{padding:100px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--red);font-size:.78rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+.eyebrow:before{content:"";width:27px;height:2px;background:var(--gold)}
+.section-head{max-width:700px;margin:0 auto 48px;text-align:center}
+.section-head .eyebrow{justify-content:center}
+.section-head h2{font:800 clamp(2.2rem,4vw,3.5rem)/1.1 'Playfair Display',serif;margin:15px 0;color:var(--wine)}
+.section-head p{color:var(--muted);font-size:1.02rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 23px;border-radius:999px;font-weight:800;border:1px solid transparent;transition:.25s;cursor:pointer}
+.btn-primary{background:var(--red);color:white;box-shadow:0 10px 24px rgba(159,29,45,.23)}
+.btn-primary:hover{background:var(--wine);transform:translateY(-3px)}
+.btn-light{background:white;color:var(--wine)}
+.btn-outline{border-color:rgba(255,255,255,.55);color:white;background:transparent}
+.btn-outline:hover{background:white;color:var(--wine)}
+.topbar{background:var(--wine);color:#f7dfb4;font-size:.82rem;padding:9px 0}
+.topbar-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topbar span{display:flex;align-items:center;gap:8px}
+header{position:sticky;top:0;z-index:1000;background:rgba(255,250,242,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(75,16,27,.08)}
+.nav-wrap{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;min-width:max-content}
+.brand-mark{width:48px;height:48px;border-radius:16px;background:linear-gradient(145deg,var(--red2),var(--wine));display:grid;place-items:center;color:white;font-size:25px;box-shadow:0 8px 18px #9f1d2d35}
+.brand-name{font:800 1.25rem 'Playfair Display',serif;color:var(--wine);line-height:1.05}
+.brand-name small{display:block;font:700 .61rem 'DM Sans',sans-serif;color:var(--red);letter-spacing:2.2px;margin-top:5px}
+nav{display:flex;align-items:center;gap:25px}
+nav a{font-size:.88rem;font-weight:700;color:#554547;transition:.2s}
+nav a:hover{color:var(--red)}
+.nav-cta{padding:11px 18px;font-size:.84rem}
+.menu-btn{display:none;border:0;background:var(--paper);width:44px;height:44px;border-radius:13px;font-size:1.4rem;color:var(--wine)}
+
+.hero{min-height:690px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(35,8,13,.88) 0%,rgba(53,13,19,.72) 48%,rgba(35,8,13,.12) 100%),url('https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=2000&q=90') center/cover}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:110px;background:linear-gradient(transparent,var(--cream))}
+.hero-content{position:relative;z-index:2;color:white;max-width:690px;padding:100px 0 130px}
+.hero .eyebrow{color:#f2c977}
+.hero h1{font:800 clamp(3.1rem,7vw,6.2rem)/.99 'Playfair Display',serif;margin:22px 0}
+.hero h1 em{color:#f0c36f;font-style:normal}
+.hero p{font-size:1.12rem;color:#f4e9e3;max-width:560px;margin-bottom:30px}
+.hero-actions{display:flex;gap:13px;flex-wrap:wrap}
+.hero-note{display:flex;align-items:center;gap:13px;margin-top:35px;color:#f8e9d8;font-size:.88rem}
+.hero-note strong{color:#f4c46c}
+.hero-note .stars{color:#f4c46c;letter-spacing:2px}
+.floating-badge{position:absolute;right:9%;bottom:18%;z-index:2;background:#fffaf2;color:var(--wine);padding:20px 23px;border-radius:20px;box-shadow:var(--shadow);transform:rotate(4deg)}
+.floating-badge b{font:800 2rem 'Playfair Display',serif;display:block;color:var(--red)}
+.floating-badge span{font-size:.72rem;font-weight:800;letter-spacing:1px}
+.features{position:relative;z-index:4;margin-top:-35px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);background:white;border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.feature{display:flex;align-items:center;gap:16px;padding:27px 30px;border-right:1px solid #f0e7df}
+.feature:last-child{border:0}
+.feature-icon{width:52px;height:52px;display:grid;place-items:center;background:#fff1e2;border-radius:17px;font-size:1.55rem}
+.feature h3{font-size:.98rem;color:var(--wine)}
+.feature p{font-size:.8rem;color:var(--muted)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-visual{position:relative;padding:0 45px 45px 0}
+.about-visual img{height:520px;border-radius:28px;box-shadow:var(--shadow)}
+.about-small{position:absolute;right:0;bottom:0;width:48%;height:235px;border:10px solid var(--cream);border-radius:25px}
+.about-stamp{position:absolute;left:-18px;top:35px;background:var(--gold);color:var(--wine);width:105px;height:105px;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:.72rem;font-weight:900;line-height:1.2;transform:rotate(-12deg);border:5px solid var(--cream)}
+.about-copy h2{font:800 clamp(2.2rem,4vw,3.35rem)/1.1 'Playfair Display',serif;color:var(--wine);margin:16px 0 20px}
+.about-copy>p{color:var(--muted);margin-bottom:22px}
+.values{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:28px 0}
+.value{padding:17px;background:white;border-radius:16px;border:1px solid #f1e8de}
+.value b{display:block;color:var(--wine);font-size:.93rem}
+.value span{font-size:.8rem;color:var(--muted)}
+.products{background:var(--paper);position:relative;overflow:hidden}
+.products:before{content:"";position:absolute;width:360px;height:360px;border-radius:50%;border:1px solid #e9d9c9;top:-170px;left:-130px}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.product-card{background:white;border-radius:22px;overflow:hidden;box-shadow:0 9px 28px rgba(50,20,20,.07);transition:.3s;position:relative}
+.product-card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.product-image{height:215px;position:relative;overflow:hidden;background:#eee}
+.product-image img{height:100%;transition:.5s}
+.product-card:hover .product-image img{transform:scale(1.07)}
+.product-tag{position:absolute;top:14px;left:14px;background:var(--gold);color:var(--wine);padding:6px 11px;border-radius:999px;font-size:.68rem;font-weight:900;letter-spacing:.5px}
+.product-info{padding:20px}
+.product-info h3{font:700 1.15rem 'Playfair Display',serif;color:var(--wine);margin-bottom:6px}
+.product-info p{font-size:.82rem;color:var(--muted);min-height:50px}
+.product-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:17px;gap:8px}
+.price{font:800 1.45rem 'Playfair Display',serif;color:var(--red)}
+.price small{font:600 .65rem 'DM Sans',sans-serif;color:var(--muted)}
+.buy{width:42px;height:42px;border-radius:14px;background:var(--red);color:white;display:grid;place-items:center;font-size:1.2rem;transition:.2s}
+.buy:hover{background:var(--wine);transform:rotate(-8deg)}
+.promo{padding:0 0 100px;background:var(--paper)}
+.promo-box{min-height:300px;border-radius:30px;overflow:hidden;position:relative;display:flex;align-items:center;padding:55px;background:linear-gradient(90deg,rgba(56,9,18,.93),rgba(56,9,18,.55)),url('https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=1600&q=85') center/cover;color:white}
+.promo-box h2{font:800 clamp(2rem,4vw,3.3rem)/1.1 'Playfair Display',serif;max-width:600px;margin:13px 0}
+.promo-box p{color:#f5dfd5;margin-bottom:22px}
+.gallery-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:220px 220px;gap:16px}
+.gallery-grid img{height:100%;border-radius:19px;transition:.35s}
+.gallery-grid img:hover{transform:scale(1.025);filter:saturate(1.15)}
+.gallery-grid .big{grid-row:span 2}
+.gallery-grid .wide{grid-column:span 2}
+.gallery-caption{text-align:center;color:var(--muted);font-size:.84rem;margin-top:18px}
+.story-band{background:var(--wine);color:white;padding:78px 0;position:relative;overflow:hidden}
+.story-band:after{content:"";position:absolute;width:420px;height:420px;border:1px solid #ffffff18;border-radius:50%;right:-120px;top:-200px}
+.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:35px;position:relative;z-index:1}
+.story-item{text-align:center;padding:10px}
+.story-item .number{font:800 3rem 'Playfair Display',serif;color:var(--gold)}
+.story-item h3{font:700 1.2rem 'Playfair Display',serif;margin:5px 0 8px}
+.story-item p{color:#e3cfd0;font-size:.88rem}
+.location-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px;align-items:center}
+.location-copy h2{font:800 clamp(2.1rem,4vw,3.2rem)/1.1 'Playfair Display',serif;color:var(--wine);margin:15px 0}
+.location-copy p{color:var(--muted);margin-bottom:22px}
+.contact-line{display:flex;gap:13px;align-items:center;margin:18px 0}
+.contact-icon{width:46px;height:46px;border-radius:15px;background:#fff0e4;color:var(--red);display:grid;place-items:center;font-size:1.2rem}
+.contact-line b{display:block;color:var(--wine);font-size:.9rem}
+.contact-line span{font-size:.82rem;color:var(--muted)}
+.map-frame{height:420px;border:0;border-radius:24px;width:100%;box-shadow:var(--shadow)}
+.contact{background:var(--paper)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.contact-photo{height:470px;border-radius:25px;overflow:hidden;position:relative}
+.contact-photo img{height:100%}
+.contact-photo:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(45,8,15,.7))}
+.contact-photo-label{position:absolute;z-index:2;bottom:28px;left:28px;color:white;font:700 1.7rem 'Playfair Display',serif}
+.contact-form{background:white;padding:35px;border-radius:25px;box-shadow:var(--shadow)}
+.contact-form h3{font:700 1.8rem 'Playfair Display',serif;color:var(--wine);margin-bottom:8px}
+.contact-form>p{color:var(--muted);font-size:.9rem;margin-bottom:22px}
+.field{margin:14px 0}
+.field label{display:block;font-size:.8rem;font-weight:800;color:#5c4547;margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;border:1px solid #eadfd7;background:#fffdf9;border-radius:12px;padding:13px 14px;font:inherit;outline:none;transition:.2s}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--red);box-shadow:0 0 0 3px #9f1d2d12}
+.field textarea{min-height:110px;resize:vertical}
+.contact-form .btn{width:100%;border:0}
+footer{background:#2b0c13;color:#e8d8d2;padding:55px 0 22px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:45px;padding-bottom:35px}
+.footer-brand .brand-name{color:white}
+.footer-brand p{font-size:.86rem;color:#c9b7b5;max-width:330px;margin:18px 0}
+footer h4{color:var(--gold);font-size:.85rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:15px}
+.footer-links{display:grid;gap:9px;font-size:.85rem;color:#d5c4c2}
+.footer-links a:hover{color:var(--gold)}
+.socials{display:flex;gap:10px;margin-top:18px}
+.socials a{width:38px;height:38px;border:1px solid #ffffff35;border-radius:50%;display:grid;place-items:center}
+.socials a:hover{background:var(--red)}
+.copyright{border-top:1px solid #ffffff20;padding-top:18px;text-align:center;font-size:.76rem;color:#bda9a7}
+.whatsapp-float{position:fixed;right:22px;bottom:22px;z-index:999;width:60px;height:60px;border-radius:50%;background:#1fbf69;color:white;display:grid;place-items:center;font-size:1.8rem;box-shadow:0 9px 25px #0a7d4144;transition:.2s}
+.whatsapp-float:hover{transform:translateY(-5px) scale(1.04)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:none}
+
+/* EXPERIENCIA DE COMPRA */
+.cart-nav{display:inline-flex;align-items:center;gap:9px;border:1px solid #eadbd0;background:#fff;border-radius:999px;padding:10px 15px;color:var(--wine);font-weight:800;font-size:.82rem;cursor:pointer;white-space:nowrap;transition:.2s}
+.cart-nav:hover{border-color:var(--gold);transform:translateY(-2px)}
+.cart-nav span{display:grid;place-items:center;min-width:22px;height:22px;padding:0 5px;background:var(--red);color:#fff;border-radius:50%;font-size:.72rem}
+.add-to-cart{border:0;cursor:pointer;font-size:1.35rem}
+.add-to-cart.added{background:#25764d}
+.checkout-overlay{position:fixed;inset:0;z-index:2000;background:rgba(27,8,13,.72);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:22px}
+.checkout-overlay.open{display:flex}
+.checkout-modal{position:relative;width:min(100%,1000px);max-height:min(92vh,900px);overflow:auto;background:#fffaf5;border-radius:28px;padding:34px;box-shadow:0 28px 90px #17060a66;animation:checkoutIn .25s ease}
+@keyframes checkoutIn{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:none}}
+.checkout-close{position:absolute;right:22px;top:18px;width:42px;height:42px;border:0;border-radius:50%;background:#f2e7df;color:var(--wine);font-size:1.7rem;cursor:pointer}
+.checkout-heading{max-width:650px;margin-bottom:25px}
+.checkout-heading h2{font:800 clamp(2rem,4vw,2.8rem)/1.1 'Playfair Display',serif;color:var(--wine);margin:8px 0}
+.checkout-heading p{color:var(--muted);font-size:.9rem}
+.checkout-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.cart-panel,.checkout-form{background:white;border:1px solid #efe4da;border-radius:20px;padding:23px}
+.cart-panel-title{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:16px;border-bottom:1px solid #f0e7df}
+.cart-panel-title h3,.checkout-form h3{font:700 1.25rem 'Playfair Display',serif;color:var(--wine)}
+.cart-panel-title span{font-size:.75rem;color:var(--muted);font-weight:700}
+.cart-items{display:grid;gap:12px;padding:15px 0;max-height:310px;overflow:auto}
+.cart-empty{text-align:center;padding:28px 10px;color:var(--muted)}
+.cart-empty span{font-size:2rem;display:block;margin-bottom:8px}
+.cart-empty b{color:var(--wine)}
+.cart-empty p{font-size:.8rem;margin-top:4px}
+.cart-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid #f3ece6}
+.cart-product-name{font-weight:800;color:var(--wine);font-size:.88rem}
+.cart-product-price{font-size:.78rem;color:var(--muted);margin-top:3px}
+.cart-controls{display:flex;align-items:center;gap:8px}
+.qty-btn{width:28px;height:28px;border:1px solid #eadbd0;background:#fffaf5;border-radius:9px;color:var(--wine);font-weight:900;cursor:pointer}
+.qty-number{font-size:.85rem;font-weight:800;min-width:15px;text-align:center}
+.remove-item{border:0;background:transparent;color:#b34b52;cursor:pointer;font-size:.75rem;margin-left:4px}
+.cart-total{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eadfd7;padding-top:16px;color:var(--wine);font-weight:800}
+.cart-total strong{font:800 1.65rem 'Playfair Display',serif;color:var(--red)}
+.cart-note,.secure-note{font-size:.72rem;line-height:1.5;color:#897c77;margin-top:12px}
+.checkout-form h3{margin-bottom:15px}
+.checkout-field{margin:12px 0}
+.checkout-field label{display:block;font-size:.76rem;font-weight:800;color:#5c4547;margin-bottom:6px}
+.checkout-field input,.checkout-field select,.checkout-field textarea{width:100%;border:1px solid #e9ddd4;background:#fffdfb;border-radius:11px;padding:11px 12px;font:inherit;font-size:.86rem;outline:none}
+.checkout-field input:focus,.checkout-field select:focus,.checkout-field textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px #9f1d2d12}
+.checkout-field [hidden]{display:none}
+.checkout-submit{width:100%;border:0;margin-top:8px}
+.checkout-submit:disabled{opacity:.45;cursor:not-allowed}
+.secure-note{text-align:center}
+
+@media(max-width:760px){
+ .cart-nav{margin-left:auto;padding:9px 11px;font-size:.76rem}
+ .checkout-overlay{padding:9px;align-items:flex-end}
+ .checkout-modal{padding:25px 17px 20px;border-radius:24px 24px 15px 15px;max-height:95vh}
+ .checkout-layout{grid-template-columns:1fr;gap:14px}
+ .cart-panel,.checkout-form{padding:17px}
+ .checkout-heading{padding-right:35px}
+ .cart-items{max-height:210px}
+}
+@media(max-width:1000px){
+ nav{gap:14px}nav a{font-size:.8rem}.product-grid{grid-template-columns:repeat(2,1fr)}
+ .floating-badge{right:5%;bottom:10%}
+}
+@media(max-width:760px){
+ .container{width:min(100% - 30px,var(--max))}
+ .topbar-inner{justify-content:center;text-align:center}
+ .nav-wrap{height:72px}.menu-btn{display:block}
+ nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--cream);padding:18px 25px 25px;box-shadow:0 18px 24px #32101618;flex-direction:column;align-items:stretch;gap:0}
+ nav.open{display:flex}nav a{padding:13px 5px;border-bottom:1px solid #eee2d9;font-size:.92rem}
+ nav .nav-cta{margin-top:13px;text-align:center}
+ .hero{min-height:660px;background-position:58% center}.hero-content{padding:85px 0 125px}.hero p{font-size:1rem}
+ .floating-badge{display:none}.feature-grid{grid-template-columns:1fr}.feature{border-right:0;border-bottom:1px solid #f0e7df;padding:19px 22px}
+ .section{padding:75px 0}.about-grid,.location-grid,.contact-grid{grid-template-columns:1fr;gap:35px}
+ .about-visual{padding:0 25px 30px 0}.about-visual img{height:390px}.about-small{height:175px}
+ .about-stamp{left:-5px;width:85px;height:85px;font-size:.62rem}
+ .product-grid{gap:14px}.product-image{height:165px}.product-info{padding:15px}.product-info h3{font-size:1rem}
+ .product-info p{font-size:.76rem;min-height:60px}.price{font-size:1.2rem}
+ .promo-box{padding:35px 25px;min-height:340px}
+ .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
+ .gallery-grid .big{grid-row:span 2}.gallery-grid .wide{grid-column:span 2}
+ .story-grid{grid-template-columns:1fr;gap:22px}.story-band{padding:60px 0}
+ .map-frame{height:330px}.contact-photo{height:330px}.contact-form{padding:25px}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:30px}.footer-brand{grid-column:span 2}
+}
+@media(max-width:420px){
+ .product-grid{grid-template-columns:1fr 1fr}
+ .product-image{height:135px}.product-info p{min-height:72px}
+ .product-info h3{font-size:.94rem}.buy{width:36px;height:36px}
+ .gallery-grid{grid-template-rows:145px 145px 145px;gap:9px}
+ .footer-grid{grid-template-columns:1fr}.footer-brand{grid-column:auto}
+ .hero h1{font-size:2.9rem}
+}
+</style>
+</head>
+
+<body>
+<div class="topbar">
+ <div class="container topbar-inner">
+  <span>📍 Oruro, Bolivia · Sabor que reúne</span>
+  <span>☎ Atención y pedidos: +591 72329718</span>
+ </div>
+</div>
+
+<header>
+ <div class="container nav-wrap">
+  <a class="brand" href="#inicio">
+   <span class="brand-mark">🍗</span>
+   <span class="brand-name">EL POLLO FELIZ<small>SABOR QUE REÚNE</small></span>
+  </a>
+  <button class="cart-nav" id="cartOpen" type="button">🛒 Mi pedido <span id="cartCount">0</span></button>
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+  <nav id="nav">
+   <a href="#inicio">Inicio</a>
+   <a href="#nosotros">Nosotros</a>
+   <a href="#productos">Menú</a>
+   <a href="#galeria">Galería</a>
+   <a href="#ubicacion">Ubicación</a>
+   <a href="#contacto">Contacto</a>
+   <a class="btn btn-primary nav-cta" href="#productos">Hacer pedido ↗</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+ <div class="container">
+  <div class="hero-content">
+   <span class="eyebrow">Tradición · Calidad · Sabor</span>
+   <h1>El sabor que<br><em>te hace feliz.</em></h1>
+   <p>Disfruta el auténtico sabor del pollo a la brasa, preparado con ingredientes seleccionados y ese toque especial que convierte cada comida en un gran momento.</p>
+   <div class="hero-actions">
+    <a class="btn btn-primary" href="#productos">🍗 Explorar el menú</a>
+    <a class="btn btn-outline" href="#nosotros">Conócenos</a>
+   </div>
+   <div class="hero-note">
+    <span class="stars">★★★★★</span>
+    <span><strong>Hecho con dedicación</strong><br>Para compartir con quienes más quieres.</span>
+   </div>
+  </div>
+ </div>
+ <div class="floating-badge"><b>100%</b><span>SABOR Y CALIDAD</span></div>
+</section>
+
+<div class="container features">
+ <div class="feature-grid">
+  <div class="feature"><div class="feature-icon">🔥</div><div><h3>Recién preparado</h3><p>Caliente, dorado y delicioso.</p></div></div>
+  <div class="feature"><div class="feature-icon">🥗</div><div><h3>Ingredientes seleccionados</h3><p>Calidad en cada preparación.</p></div></div>
+  <div class="feature"><div class="feature-icon">❤️</div><div><h3>Atención familiar</h3><p>Momentos para disfrutar juntos.</p></div></div>
+ </div>
+</div>
+
+<section class="section" id="nosotros">
+ <div class="container about-grid">
+  <div class="about-visual reveal">
+   <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=1100&q=85" alt="Pollo asado dorado servido en una mesa">
+   <img class="about-small" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=85" alt="Comida preparada para compartir">
+   <div class="about-stamp">HECHO<br>CON<br>AMOR ✦</div>
+  </div>
+  <div class="about-copy reveal">
+   <span class="eyebrow">Nuestra historia</span>
+   <h2>Más que una pollería, un lugar para compartir.</h2>
+   <p>El Pollo Feliz nació con la idea de compartir momentos especiales alrededor de una buena comida. Nos inspira ofrecer pollo delicioso, atención cálida y un ambiente donde las familias y amigos puedan reunirse.</p>
+   <p>Trabajamos con dedicación, cuidando cada preparación y buscando mejorar día a día gracias a la confianza de nuestros clientes.</p>
+   <div class="values">
+    <div class="value"><b>✦ Misión</b><span>Brindar productos de calidad, excelente sabor y atención amable.</span></div>
+    <div class="value"><b>✦ Visión</b><span>Ser una pollería reconocida por su calidad, innovación y compromiso.</span></div>
+    <div class="value"><b>✦ Compromiso</b><span>Cuidar cada detalle de nuestros productos y servicio.</span></div>
+    <div class="value"><b>✦ Nuestro objetivo</b><span>Hacer que cada visita sea una experiencia feliz.</span></div>
+   </div>
+   <a class="btn btn-primary" href="#contacto">Conoce nuestro local →</a>
+  </div>
+ </div>
+</section>
+
+<section class="section products" id="productos">
+ <div class="container">
+  <div class="section-head reveal">
+   <span class="eyebrow">Nuestro menú</span>
+   <h2>Elige tu favorito</h2>
+   <p>Opciones deliciosas para disfrutar solo, en pareja o con toda la familia.</p>
+  </div>
+  <div class="product-grid">
+   <article class="product-card reveal">
+    <div class="product-image"><img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=750&q=85" alt="Pollo entero a la brasa"><span class="product-tag">FAVORITO</span></div>
+    <div class="product-info"><h3>Pollo entero a la brasa</h3><p>Pollo dorado y jugoso, ideal para compartir.</p><div class="product-bottom"><span class="price">Bs 70</span><button class="buy add-to-cart" type="button" data-product="Pollo entero a la brasa" data-price="70" aria-label="Agregar Pollo entero a la brasa al pedido">＋</button></div></div>
+   </article>
+   <article class="product-card reveal">
+    <div class="product-image"><img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=750&q=85" alt="Medio pollo con papas"><span class="product-tag">COMBO</span></div>
+    <div class="product-info"><h3>1/2 pollo + papas</h3><p>Una porción perfecta con papas doraditas.</p><div class="product-bottom"><span class="price">Bs 40</span><button class="buy add-to-cart" type="button" data-product="1/2 pollo + papas" data-price="40" aria-label="Agregar 1/2 pollo + papas al pedido">＋</button></div></div>
+   </article>
+   <article class="product-card reveal">
+    <div class="product-image"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=750&q=85" alt="Combo familiar"><span class="product-tag">PARA COMPARTIR</span></div>
+    <div class="product-info"><h3>Combo familiar</h3><p>Una opción abundante para disfrutar en familia.</p><div class="product-bottom"><span class="price">Bs 120</span><button class="buy add-to-cart" type="button" data-product="Combo familiar" data-price="120" aria-label="Agregar Combo familiar al pedido">＋</button></div></div>
+   </article>
+   <article class="product-card reveal">
+    <div class="product-image"><img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=750&q=85" alt="Alitas BBQ"><span class="product-tag">ESPECIALIDAD</span></div>
+    <div class="product-info"><h3>Alitas BBQ</h3><p>Alitas con salsa BBQ y un toque irresistible.</p><div class="product-bottom"><span class="price">Bs 35</span><button class="buy add-to-cart" type="button" data-product="Alitas BBQ" data-price="35" aria-label="Agregar Alitas BBQ al pedido">＋</button></div></div>
+   </article>
+   <article class="product-card reveal">
+    <div class="product-image"><img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=750&q=85" alt="Pipocas de pollo"><span class="product-tag">PARA PICAR</span></div>
+    <div class="product-info"><h3>Pipocas de pollo</h3><p>Bocaditos crocantes para compartir y disfrutar.</p><div class="product-bottom"><span class="price">Bs 25</span><button class="buy add-to-cart" type="button" data-product="Pipocas de pollo" data-price="25" aria-label="Agregar Pipocas de pollo al pedido">＋</button></div></div>
+   </article>
+   <article class="product-card reveal">
+    <div class="product-image"><img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=750&q=85" alt="Nuggets de pollo"><span class="product-tag">DELICIOSO</span></div>
+    <div class="product-info"><h3>Nuggets de pollo</h3><p>Crujientes por fuera y suaves por dentro.</p><div class="product-bottom"><span class="price">Bs 30</span><button class="buy add-to-cart" type="button" data-product="Nuggets de pollo" data-price="30" aria-label="Agregar Nuggets de pollo al pedido">＋</button></div></div>
+   </article>
+   <article class="product-card reveal">
+    <div class="product-image"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=750&q=85" alt="Sopa de pollo"><span class="product-tag">CALIENTITO</span></div>
+    <div class="product-info"><h3>Sopa de pollo</h3><p>Una preparación reconfortante y llena de sabor.</p><div class="product-bottom"><span class="price">Bs 20</span><button class="buy add-to-cart" type="button" data-product="Sopa de pollo" data-price="20" aria-label="Agregar Sopa de pollo al pedido">＋</button></div></div>
+   </article>
+   <article class="product-card reveal">
+    <div class="product-image"><img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=750&q=85" alt="Pollo entero al spiedo"><span class="product-tag">ESPECIAL</span></div>
+    <div class="product-info"><h3>Pollo entero al spiedo</h3><p>Una alternativa sabrosa, dorada y para compartir.</p><div class="product-bottom"><span class="price">Bs 80</span><button class="buy add-to-cart" type="button" data-product="Pollo entero al spiedo" data-price="80" aria-label="Agregar Pollo entero al spiedo al pedido">＋</button></div></div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="promo">
+ <div class="container">
+  <div class="promo-box reveal">
+   <div>
+    <span class="eyebrow" style="color:#f4c46c">Un momento delicioso</span>
+    <h2>Los mejores momentos empiezan alrededor de la mesa.</h2>
+    <p>Reúne a tu familia y disfruta algo rico hoy.</p>
+    <a class="btn btn-light" href="#productos">Ver opciones del menú →</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="galeria">
+ <div class="container">
+  <div class="section-head reveal">
+   <span class="eyebrow">Galería</span>
+   <h2>Un vistazo a nuestro sabor</h2>
+   <p>Imágenes que representan el gusto por la buena comida y los momentos compartidos.</p>
+  </div>
+  <div class="gallery-grid reveal">
+   <img class="big" src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=900&q=85" alt="Pollo a la brasa servido">
+   <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=85" alt="Piezas de pollo crujiente">
+   <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=85" alt="Comida para compartir">
+   <img class="wide" src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=85" alt="Mesa con comida">
+   <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=85" alt="Pollo con guarnición">
+  </div>
+  <p class="gallery-caption">El Pollo Feliz · Calidad, sabor y buenos momentos.</p>
+ </div>
+</section>
+
+<section class="story-band">
+ <div class="container story-grid">
+  <div class="story-item"><div class="number">01</div><h3>Seleccionamos</h3><p>Elegimos ingredientes para cuidar la calidad de cada preparación.</p></div>
+  <div class="story-item"><div class="number">02</div><h3>Preparamos</h3><p>Cocinamos con dedicación para ofrecer sabor en cada porción.</p></div>
+  <div class="story-item"><div class="number">03</div><h3>Compartimos</h3><p>Queremos acompañar tus reuniones y momentos especiales.</p></div>
+ </div>
+</section>
+
+<section class="section" id="ubicacion">
+ <div class="container location-grid">
+  <div class="location-copy reveal">
+   <span class="eyebrow">Encuéntranos</span>
+   <h2>Ven a visitarnos.</h2>
+   <p>Estamos en Oruro, Bolivia. Consulta el mapa para ubicar la zona y contáctanos para confirmar la dirección y los horarios de atención.</p>
+   <div class="contact-line"><div class="contact-icon">📍</div><div><b>Ubicación</b><span>Zona Plaza Principal 10 de Febrero, Oruro</span></div></div>
+   <div class="contact-line"><div class="contact-icon">📞</div><div><b>Teléfono / WhatsApp</b><span>+591 72329718</span></div></div>
+   <div class="contact-line"><div class="contact-icon">✉️</div><div><b>Correo electrónico</b><span>fernandokenta@gmail.com</span></div></div>
+   <a class="btn btn-primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Plaza+Principal+10+de+Febrero+Oruro+Bolivia">Abrir Google Maps ↗</a>
+  </div>
+  <iframe class="map-frame reveal" title="Mapa de ubicación de El Pollo Feliz en Oruro" loading="lazy" src="https://www.google.com/maps?q=Plaza%20Principal%2010%20de%20Febrero%2C%20Oruro%2C%20Bolivia&output=embed"></iframe>
+ </div>
+</section>
+
+<section class="section contact" id="contacto">
+ <div class="container contact-grid">
+  <div class="contact-photo reveal">
+   <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=85" alt="Comida preparada para compartir">
+   <div class="contact-photo-label">¡Estamos para atenderte!</div>
+  </div>
+  <form class="contact-form reveal" id="contactForm">
+   <span class="eyebrow">Contáctanos</span>
+   <h3>Hablemos de tu pedido</h3>
+   <p>Completa tus datos y se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+   <div class="field"><label for="nombre">Tu nombre</label><input id="nombre" name="nombre" placeholder="Escribe tu nombre" required></div>
+   <div class="field"><label for="telefono">Tu teléfono</label><input id="telefono" name="telefono" placeholder="Tu número de contacto"></div>
+   <div class="field"><label for="mensaje">¿En qué podemos ayudarte?</label><textarea id="mensaje" name="mensaje" placeholder="Escribe tu consulta o pedido..." required></textarea></div>
+   <button class="btn btn-primary" type="submit">Enviar por WhatsApp ↗</button>
+  </form>
+ </div>
+</section>
+</main>
+
+<div class="checkout-overlay" id="checkoutOverlay" aria-hidden="true">
+ <section class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+  <button class="checkout-close" id="cartClose" type="button" aria-label="Cerrar">×</button>
+  <div class="checkout-heading">
+   <span class="eyebrow">Tu selección</span>
+   <h2 id="checkoutTitle">Finalizar pedido</h2>
+   <p>Revisa tus productos y completa tus datos para confirmar por WhatsApp.</p>
+  </div>
+  <div class="checkout-layout">
+   <div class="cart-panel">
+    <div class="cart-panel-title"><h3>Resumen de tu pedido</h3><span id="cartItemsLabel">0 productos</span></div>
+    <div id="cartItems" class="cart-items">
+     <div class="cart-empty"><span>🛍️</span><b>Tu pedido está vacío</b><p>Agrega tus favoritos desde nuestro menú.</p></div>
+    </div>
+    <div class="cart-total"><span>Total estimado</span><strong id="cartTotal">Bs 0</strong></div>
+    <p class="cart-note">El total se confirmará al coordinar tu pedido. Los costos de entrega, si corresponden, se informarán por WhatsApp.</p>
+   </div>
+   <form class="checkout-form" id="checkoutForm">
+    <h3>Datos de entrega</h3>
+    <div class="checkout-field"><label for="buyerName">Nombre completo *</label><input id="buyerName" required placeholder="Tu nombre"></div>
+    <div class="checkout-field"><label for="buyerPhone">Número de contacto *</label><input id="buyerPhone" required inputmode="tel" placeholder="Tu número de celular"></div>
+    <div class="checkout-field"><label for="orderType">¿Cómo deseas recibirlo?</label><select id="orderType"><option value="Recojo en local">Recojo en el local</option><option value="Entrega a domicilio">Entrega a domicilio</option></select></div>
+    <div class="checkout-field" id="addressField" hidden><label for="buyerAddress">Dirección de entrega *</label><input id="buyerAddress" placeholder="Zona, calle y número"></div>
+    <div class="checkout-field"><label for="paymentMethod">Forma de pago</label><select id="paymentMethod"><option>Efectivo</option><option>Transferencia (coordinar por WhatsApp)</option></select></div>
+    <div class="checkout-field"><label for="orderNotes">Indicaciones adicionales</label><textarea id="orderNotes" rows="3" placeholder="Ej. referencia, sin picante, etc."></textarea></div>
+    <button class="btn btn-primary checkout-submit" type="submit">Confirmar pedido por WhatsApp ↗</button>
+    <p class="secure-note">🔒 Tus datos se utilizan únicamente para coordinar este pedido.</p>
+   </form>
+  </div>
+ </section>
+</div>
+
+<footer>
+ <div class="container">
+  <div class="footer-grid">
+   <div class="footer-brand">
+    <a class="brand" href="#inicio"><span class="brand-mark">🍗</span><span class="brand-name">EL POLLO FELIZ<small>SABOR QUE REÚNE</small></span></a>
+    <p>Pollo delicioso, atención amable y momentos especiales para compartir. Gracias por elegirnos.</p>
+    <div class="socials"><a href="https://wa.me/59172329718" aria-label="WhatsApp">✆</a><a href="#contacto" aria-label="Contacto">✉</a><a href="#inicio" aria-label="Inicio">⌂</a></div>
+   </div>
+   <div>
+    <h4>Explora</h4>
+    <div class="footer-links"><a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#productos">Menú</a><a href="#galeria">Galería</a></div>
+   </div>
+   <div>
+    <h4>Contáctanos</h4>
+    <div class="footer-links">
+     <span>Oruro, Bolivia</span>
+     <a href="tel:+59172329718">+591 72329718</a>
+     <a href="mailto:fernandokenta@gmail.com">fernandokenta@gmail.com</a>
+     <a href="#ubicacion">Cómo llegar</a>
+    </div>
+   </div>
+  </div>
+  <div class="copyright">© <span id="year"></span> El Pollo Feliz. Todos los derechos reservados.</div>
+ </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/59172329718?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20El%20Pollo%20Feliz" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">✆</a>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const nav=document.getElementById('nav');
+
+menuBtn.addEventListener('click',()=>{
+ nav.classList.toggle('open');
+ menuBtn.textContent=nav.classList.contains('open')?'✕':'☰';
+});
+
+nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+ nav.classList.remove('open');
+ menuBtn.textContent='☰';
+}));
+
+document.getElementById('year').textContent=new Date().getFullYear();
+
+document.getElementById('contactForm').addEventListener('submit',function(e){
+ e.preventDefault();
+
+ const nombre=document.getElementById('nombre').value.trim();
+ const telefono=document.getElementById('telefono').value.trim();
+ const mensaje=document.getElementById('mensaje').value.trim();
+
+ const texto=`Hola, soy ${nombre}. ${telefono?'Mi teléfono es '+telefono+'. ':''}${mensaje}`;
+
+ window.open('https://wa.me/59172329718?text='+encodeURIComponent(texto),'_blank');
+});
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('show');
+   observer.unobserve(entry.target);
+  }
+ });
+},{threshold:.12});
+
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Carrito y confirmación de compra
+const cart = {};
+const overlay = document.getElementById('checkoutOverlay');
+const cartCount = document.getElementById('cartCount');
+const cartItems = document.getElementById('cartItems');
+const cartTotal = document.getElementById('cartTotal');
+const cartItemsLabel = document.getElementById('cartItemsLabel');
+const checkoutSubmit = document.querySelector('.checkout-submit');
+
+const money = value => 'Bs ' + value.toFixed(2).replace(/\.00$/, '');
+
+function renderCart(){
+ const entries = Object.entries(cart);
+ const count = entries.reduce((sum,[,item])=>sum+item.qty,0);
+ const total = entries.reduce((sum,[,item])=>sum+item.price*item.qty,0);
+
+ cartCount.textContent = count;
+ cartItemsLabel.textContent = count + (count===1?' producto':' productos');
+ cartTotal.textContent = money(total);
+ checkoutSubmit.disabled = count===0;
+
+ if(!entries.length){
+  cartItems.innerHTML='<div class="cart-empty"><span>🛍️</span><b>Tu pedido está vacío</b><p>Agrega tus favoritos desde nuestro menú.</p></div>';
+  return;
+ }
+
+ cartItems.innerHTML=entries.map(([key,item])=>`
+  <div class="cart-row">
+   <div>
+    <div class="cart-product-name">${item.name}</div>
+    <div class="cart-product-price">${money(item.price)} · ${money(item.price*item.qty)}</div>
+   </div>
+   <div class="cart-controls">
+    <button class="qty-btn" type="button" data-action="minus" data-key="${key}" aria-label="Quitar uno">−</button>
+    <span class="qty-number">${item.qty}</span>
+    <button class="qty-btn" type="button" data-action="plus" data-key="${key}" aria-label="Agregar uno">+</button>
+    <button class="remove-item" type="button" data-action="remove" data-key="${key}">Quitar</button>
+   </div>
+  </div>`).join('');
+}
+
+document.querySelectorAll('.add-to-cart').forEach(button=>{
+ button.addEventListener('click',()=>{
+  const name=button.dataset.product;
+  const price=Number(button.dataset.price);
+
+  if(!cart[name])cart[name]={name,price,qty:0};
+  cart[name].qty++;
+
+  renderCart();
+
+  button.textContent='✓';
+  button.classList.add('added');
+
+  setTimeout(()=>{
+   button.textContent='＋';
+   button.classList.remove('added');
+  },850);
+ });
+});
+
+cartItems.addEventListener('click',event=>{
+ const button=event.target.closest('button[data-action]');
+ if(!button)return;
+
+ const item=cart[button.dataset.key];
+ if(!item)return;
+
+ if(button.dataset.action==='plus')item.qty++;
+ if(button.dataset.action==='minus')item.qty--;
+
+ if(button.dataset.action==='remove'||item.qty<=0){
+  delete cart[button.dataset.key];
+ }
+
+ renderCart();
+});
+
+function openCart(){
+ overlay.classList.add('open');
+ overlay.setAttribute('aria-hidden','false');
+ document.body.style.overflow='hidden';
+}
+
+function closeCart(){
+ overlay.classList.remove('open');
+ overlay.setAttribute('aria-hidden','true');
+ document.body.style.overflow='';
+}
+
+document.getElementById('cartOpen').addEventListener('click',openCart);
+document.getElementById('cartClose').addEventListener('click',closeCart);
+
+overlay.addEventListener('click',event=>{
+ if(event.target===overlay)closeCart();
+});
+
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape')closeCart();
+});
+
+const orderType=document.getElementById('orderType');
+const addressField=document.getElementById('addressField');
+
+orderType.addEventListener('change',()=>{
+ const delivery=orderType.value==='Entrega a domicilio';
+ addressField.hidden=!delivery;
+ document.getElementById('buyerAddress').required=delivery;
+});
+
+document.getElementById('checkoutForm').addEventListener('submit',event=>{
+ event.preventDefault();
+
+ const entries=Object.values(cart);
+
+ if(!entries.length){
+  alert('Agrega al menos un producto a tu pedido.');
+  return;
+ }
+
+ const name=document.getElementById('buyerName').value.trim();
+ const phone=document.getElementById('buyerPhone').value.trim();
+ const type=orderType.value;
+ const address=document.getElementById('buyerAddress').value.trim();
+ const payment=document.getElementById('paymentMethod').value;
+ const notes=document.getElementById('orderNotes').value.trim();
+
+ const total=entries.reduce((sum,item)=>sum+item.price*item.qty,0);
+
+ const lines=entries.map(item=>
+  `• ${item.name} x${item.qty} — ${money(item.price*item.qty)}`
+ ).join('\n');
+
+ const message=`¡Hola, El Pollo Feliz! Quiero confirmar este pedido:
+
+${lines}
+
+TOTAL ESTIMADO: ${money(total)}
+
+Nombre: ${name}
+Teléfono: ${phone}
+Entrega: ${type}${address?'\nDirección: '+address:''}
+Forma de pago: ${payment}${notes?'\nIndicaciones: '+notes:''}
+
+Por favor, confirmen disponibilidad y costo de entrega.`;
+
+ window.open('https://wa.me/59172329718?text='+encodeURIComponent(message),'_blank');
+});
+
+renderCart();
+</script>
+</body>
+</html>
